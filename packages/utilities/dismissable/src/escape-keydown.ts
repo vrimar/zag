@@ -1,9 +1,9 @@
-import { addDomEvent, getDocument } from "@zag-js/dom-query"
+import { addDomEvent, getDocument, isComposingEvent } from "@zag-js/dom-query"
 
 export function trackEscapeKeydown(node: HTMLElement, fn?: (event: KeyboardEvent) => void) {
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key !== "Escape") return
-    if (event.isComposing) return
+    if (isComposingEvent(event)) return
     fn?.(event)
   }
 
